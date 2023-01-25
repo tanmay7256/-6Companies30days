@@ -15,7 +15,7 @@ public:
         int n = points.size();
         for (int i = 0; i < n; i++)
         {
-            unordered_map<double, int> umap;
+            map<pair<double,double>, int> umap;
             int c = 0;
             for (int j = i + 1; j < n; j++)
             {
@@ -30,8 +30,8 @@ public:
                     m = (double(points[j][1] - points[i][1]) / double(points[j][0] - points[i][0]));
                     d = (points[i][1] - m * (points[i][0]));
                 }
-                umap[m]++;
-                c = max(umap[m], c);
+                umap[{m,d}]++;
+                c = max(umap[{m,d}], c);
             }
             ans = max(ans, c + 1);
         }
